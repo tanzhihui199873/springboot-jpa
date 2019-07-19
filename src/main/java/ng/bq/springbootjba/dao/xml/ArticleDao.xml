@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ng.bq.springbootjba.dao.ArticleDao">
+    <resultMap id="Article" type="ng.bq.springbootjba.entity.Article" >
+        <id column="article_id" property="article_id" jdbcType="VARCHAR" />
+        <result column="article_title" property="article_title" jdbcType="VARCHAR" />
+        <result column="article_date" property="article_date" jdbcType="INTEGER" />
+        <result column="article_content" property="article_content" jdbcType="VARCHAR" />
+        <result column="nav_id" property="nav_id" jdbcType="INTEGER" />
+        <result column="nav_name" property="nav_name" jdbcType="VARCHAR" />
+    </resultMap>
+    <resultMap id="Nav" type="ng.bq.springbootjba.entity.NavModel" >
+        <id column="nav_id" property="nav_id" jdbcType="VARCHAR" />
+        <result column="nav_name" property="nav_name" jdbcType="VARCHAR" />
+        <result column="nav_feight" property="nav_feight" jdbcType="INTEGER" />
+    </resultMap>
+     <select id="queryArticleMapByPage" resultMap="Article">
+        select
+          article_id,article_title,article_date,nav_name
+        from article,nav
+        where
+        article.nav_id=nav.nav_id
+        order by article_date
+    </select>
+    <insert id="insertArticle" parameterType="ng.bq.springbootjba.entity.Article">
+        insert
+        into
+        article(article_id,article_title,article_date,article_content,nav_id)
+        values(#{article_id},#{article_title},#{article_date},#{article_content},#{nav_id})
+    </insert>
+    <select id="queryArticleById" resultMap="Article" parameterType="java.lang.String" >
+        select article_id,article_title,article_date,article_content,nav_id
+        from article
+        where article_id=#{article_id}
+    </select>
+    <update id="editArticle"  parameterType="ng.bq.springbootjba.entity.Article">
+        update article
+        set article_title=#{article_title},article_date=#{article_date},article_content=#{article_content},nav_id=#{nav_id}
+		where article_id=#{article_id}
+    </update>
+    <delete id="deleteNewsById"  parameterType="java.lang.String">
+        delete from article where article_id=#{article_id}
+    </delete>
+    <select id="queryNavAll" resultMap="Nav" >
+        select nav_id,nav_name,nav_feight from nav order by nav_feight asc
+    </select>
+</mapper>
