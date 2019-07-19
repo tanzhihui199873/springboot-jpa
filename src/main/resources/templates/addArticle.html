@@ -48,9 +48,8 @@
                                 <div class="controls">
                                    <!-- <select id="nav_id" class="form-control she_mai1"  style="width:10%"></select>-->
                                     <select id="nav_id"   name="nav_id"   autocomplete="off" >
-                                        <!--<option value=''>==请选择新闻类别==</option>-->
                                             <!--selected='selected'-->
-                                            <option th:each="nav:${navs}" th:value="${nav!=null}? ${nav.nav_id}" th:text="${nav.nav_name}"></option>
+                                            <option th:each="nav:${navs}"  th:selected="${article!=null}?${article.nav_id==nav.nav_id}" th:value="${nav!=null}? ${nav.nav_id}" th:text="${nav.nav_name}"></option>
                                     </select>
                                    <!-- <input type="text" class="span11"  name="lastName" th:value="${article!=null}? ${article.lastName}" />-->
                                 </div>
