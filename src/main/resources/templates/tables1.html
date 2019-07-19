@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>数据表格页面</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css" th:href="@{/css/bootstrap-responsive.min.css}" />
+    <link rel="stylesheet" href="css/uniform.css" th:href="@{/css/uniform.css}" />
+    <link rel="stylesheet" href="css/select2.css"  th:href="@{/css/select2.css}"/>
+    <link rel="stylesheet" href="css/matrix-style.css" th:href="@{/css/matrix-style.css}" />
+    <link rel="stylesheet" href="css/matrix-media.css" th:href="@{/css/matrix-media.css}" />
+    <link href="font-awesome/css/font-awesome.css" th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet" />
+</head>
+<body>
+<div th:replace="commons/bar::topbar"></div>
+<div th:replace="commons/bar::leftbar"></div>
+<div id="content">
+
+    <div class="container-fluid">
+
+        <div class="row-fluid">
+            <div class="span12">
+                <h2><a class="btn btn-sm btn-success" href="user" th:href="@{/nav}">类别添加</a></h2>
+                <div class="widget-box" id="myModal">
+                    <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                        <h5>Data table</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        <table class="table table-bordered data-table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>新闻类别</th>
+                                <th>权重</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="gradeX" th:each="navs:${nav}">
+                                <td th:text="${navs.id}" class="center"></td>
+                                <td th:text="${navs.nav1}"></td>
+                                <td th:text="${navs.navFeight}"></td>
+                                <td>
+                                    <a class="btn btn-sm btn-primary" th:href="@{/ulist1/}+${navs.id}">编辑</a>
+                                    <button th:attr="del_uri=@{/ulist1/}+${navs.id}" class="btn btn-sm btn-danger deleteBtn" >删除</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <form id="deleteUserForm"  method="post">
+                    <input type="hidden" name="_method" value="delete"/>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="js/jquery.min.js" th:src="@{/webjars/jquery/3.3.1/jquery.js}"></script>
+<script src="js/jquery.ui.custom.js" th:src="@{/js/jquery.ui.custom.js}"></script>
+<script src="js/bootstrap.min.js" th:src="@{/webjars/bootstrap/4.0.0/js/bootstrap.js}"></script>
+<script src="js/jquery.uniform.js" th:src="@{/js/jquery.uniform.js}"></script>
+<script src="js/select2.min.js" th:src="@{/js/select2.min.js}"></script>
+<script src="js/jquery.dataTables.min.js" th:src="@{/js/jquery.dataTables.min.js}"></script>
+<script src="js/matrix.js" th:src="@{/js/matrix.js}"></script>
+<script src="js/matrix.tables.js" th:src="@{/js/matrix.tables.js}"></script>
+<script>
+$(".deleteBtn").click(function(){
+$("#deleteUserForm").attr("action",$(this).attr("del_uri")).submit();
+return false ;
+});
+</script>
+<script>
+</script>
+</body>
+</html>
