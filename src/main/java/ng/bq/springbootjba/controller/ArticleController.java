@@ -17,23 +17,26 @@ import java.util.UUID;
 public class ArticleController {
     @Autowired
     ArticleService articleService;
+    //修改信息
     @PostMapping("/api/addArticle" )
     public String insertArticle(Article article){
         article.setArticle_id(UUID.randomUUID().toString());
         boolean b = articleService.insertArticle(article);
         return "redirect:/api/queryArticleMapByPage";
     }
-
+    //增加信息
     @PutMapping("/api/addArticle" )
     public String editArticle(Article article) {
         boolean b = articleService.editArticle(article);
         return "redirect:/api/queryArticleMapByPage";
     }
+    //删除信息
     @DeleteMapping("/api/deleteNewsById/{id}" )
     public String deleteNewsById(@PathVariable("id") String id){
         boolean b = articleService.deleteNewsById(id);
         return "redirect:/api/queryArticleMapByPage";
     }
+    //查询全部信息
     @GetMapping("/api/queryArticleMapByPage" )
     public String queryArticleMapByPage(Model model) {
         List<Article> articles = articleService.queryArticleMapByPage();

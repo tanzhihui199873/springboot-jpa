@@ -17,14 +17,12 @@ public class NavController {
     NavService navService;
     @Autowired
     NavDao navDao;
-
     @GetMapping("/ulist1")
     public String showPage(Model model){
         List<Nav> list=navService.findAllByOrderByIdDesc();
         model.addAttribute("nav",list);
         return "tables1";
     }
-
     //来到添加页面
     @GetMapping("/nav")
     public String toAdd(Model model){
@@ -32,8 +30,6 @@ public class NavController {
 //        model.addAttribute("users",list);
         return "add1";
     }
-
-
     //添加操作
     @RequestMapping(value = "/addnav",method = RequestMethod.POST)
     public String insertNav(Nav nav1,Map<String,Object> map){
@@ -41,7 +37,6 @@ public class NavController {
         map.put("msg","添加成功!!!");
         return "redirect:/ulist1";
     }
-
     //删除
     @DeleteMapping("/ulist1/{id}")
     public String delete(Nav nav1){
