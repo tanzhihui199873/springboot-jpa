@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://39.105.123.124:3306//springbootdemo
+    url: jdbc:mysql://39.105.123.124:3306/springBoot?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: root
     driver-class-name: com.mysql.jdbc.Driver
