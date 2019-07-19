@@ -47,7 +47,10 @@ public class LoginController {
 
     }
 
-
+    @RequestMapping("/index")
+    public String index(){
+        return "index";
+    }
     @RequestMapping("/hello")
     public String hello(){
         return "login";
