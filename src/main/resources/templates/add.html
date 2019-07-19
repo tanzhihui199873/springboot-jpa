@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>添加页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css" th:href="@{/css/bootstrap-responsive.min.css}" />
+    <link rel="stylesheet" href="css/colorpicker.css" th:href="@{/css/colorpicker.css}" />
+    <link rel="stylesheet" href="css/datepicker.css" th:href="@{/css/datepicker.css}" />
+    <link rel="stylesheet" href="css/uniform.css" th:href="@{/css/uniform.css}" />
+    <link rel="stylesheet" href="css/select2.css" th:href="@{/css/select2.css}" />
+    <link rel="stylesheet" href="css/matrix-style.css" th:href="@{/css/matrix-style.css}" />
+    <link rel="stylesheet" href="css/matrix-media.css" th:href="@{/css/matrix-media.css}" />
+    <link rel="stylesheet" href="css/bootstrap-wysihtml5.css" th:href="@{/css/bootstrap-wysihtml5.css}" />
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" th:href="@{/font-awesome/css/font-awesome.css}" />
+</head>
+<body>
+<div th:replace="commons/bar::topbar"></div>
+<div th:replace="commons/bar::leftbar"></div>
+<div id="content">
+    <div id="content-header" >
+        <div id="breadcrumb"> <a href="#" th:href="@{/ulist}" class="tip-bottom">用户管理</a> <a href="#" class="current">用户添加/修改</a> </div>
+        <h1>用户添加/修改</h1>
+    </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box" id="myModal">
+                    <div class="widget-title" > <span class="icon"> <i class="icon-align-justify"></i> </span>
+                        <h5>员工添加</h5>
+                    </div>
+                    <div class="widget-content nopadding">
+                        <form action="#" th:action="@{/adduser}"  method="post" class="form-horizontal">
+                            <input type="hidden" name="_method" value="put" th:if="${user!=null}"/>
+                            <input type="hidden" name="id" th:if="${user!=null}" th:value="${user.id}" />
+                            <div class="control-group">
+                                <label class="control-label">用户名 :</label>
+                                <div class="controls">
+                                    <input type="text" class="span11" placeholder="zhangsan" name="userName" th:value="${user!=null}? ${user.userName}" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">名字 :</label>
+                                <div class="controls">
+                                    <input type="text" class="span11" placeholder="zhangsan" name="lastName" th:value="${user!=null}? ${user.lastName}" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">密码 :</label>
+                                <div class="controls">
+                                    <input type="text"  class="span11" placeholder="Password" name="password" th:value="${user!=null}? ${user.password}" />
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-success btn_edit" th:text="${user!=null}?'修改':'添加'">添加</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></div>
+<script src="js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script src="js/jquery.ui.custom.js" th:src="@{/js/jquery.ui.custom.js}"></script>
+<script src="js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+<script src="js/bootstrap-colorpicker.js" th:src="@{/js/bootstrap-colorpicker.js}"></script>
+<script src="js/bootstrap-datepicker.js" th:src="@{/js/bootstrap-datepicker.js}"></script>
+<script src="js/jquery.toggle.buttons.html" th:src="@{/js/jquery.toggle.buttons.html}"></script>
+<script src="js/masked.js" th:src="@{/js/masked.js}"></script>
+<script src="js/jquery.uniform.js" th:src="@{/js/jquery.uniform.js}"></script>
+<script src="js/select2.min.js" th:src="@{/js/select2.min.js}"></script>
+<script src="js/matrix.js" th:src="@{/js/matrix.js}"></script>
+<script src="js/matrix.form_common.js" th:src="@{/js/matrix.form_common.js}"></script>
+<script src="js/wysihtml5-0.3.0.js" th:src="@{/js/wysihtml5-0.3.0.js}"></script>
+<script src="js/jquery.peity.min.js" th:src="@{/js/jquery.peity.min.js}"></script>
+<script src="js/bootstrap-wysihtml5.js" th:src="@{/js/bootstrap-wysihtml5.js}"></script>
+
+<script>
+    $('.textarea_editor').wysihtml5();
+</script>
+
+</body>
+</html>

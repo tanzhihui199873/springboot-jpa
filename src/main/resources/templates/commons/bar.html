@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div id="top" th:fragment="topbar">
+<div id="header">
+    <h1><a href="dashboard.html">MatAdmin</a></h1>
+</div>
+<div id="user-nav" class="navbar navbar-inverse">
+    <ul class="nav">
+        <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text" th:text="${session.loginUser}">[[${session.loginUser}]]</span><b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li><a href="login.html" th:href="@{/hello}"><i class="icon-key"></i> 退出</a></li>
+            </ul>
+        </li>
+        <li class=""><a title="" href="login.html" th:href="@{/hello}"><i class="icon icon-share-alt"></i> <span class="text">退出</span></a></li>
+    </ul>
+</div>
+</div>
+
+<div id="sidebar" th:fragment="leftbar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> 控制台</a>
+    <ul>
+        <li class="active" th:class="${activeUri=='tables.html'? 'active':''}" ><a href="index.html" th:href="@{/ulist}"><i class="icon icon-home"></i> <span>首页</span></a> </li>
+        <li><a href="#" th:href="@{/ulist}" th:class="${activeUri=='ulist'? 'active':''}">><i class="icon icon-th"></i> <span>用户管理</span></a></li>
+        <li><a href="#" th:href="@{/ulist}" th:class="${activeUri=='ulist'? 'active':''}">><i class="icon icon-th"></i> <span>类别管理</span></a></li>
+        <li><a href="#" th:href="@{/ulist}" th:class="${activeUri=='ulist'? 'active':''}">><i class="icon icon-th"></i> <span>文章管理</span></a></li>
+    </ul>
+</div>
+</body>
+</html>
