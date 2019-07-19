@@ -39,7 +39,7 @@
                             </thead>
                             <tbody>
                             <tr class="gradeX" th:each="article:${articles}">
-                                <td class="center"></td>
+                                <td class="center" th:text="${article.rowsnumber}"></td>
                                 <td th:text="${article.article_title}"></td>
                                 <td th:text="${article.nav_name}"></td>
                                 <td th:text="${article.article_date}"></td>

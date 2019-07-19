@@ -8,6 +8,7 @@
         <result column="article_content" property="article_content" jdbcType="VARCHAR" />
         <result column="nav_id" property="nav_id" jdbcType="INTEGER" />
         <result column="nav_name" property="nav_name" jdbcType="VARCHAR" />
+        <result column="rowsnumber" property="rowsnumber" jdbcType="INTEGER" />
     </resultMap>
     <resultMap id="Nav" type="ng.bq.springbootjba.entity.NavModel" >
         <id column="nav_id" property="nav_id" jdbcType="VARCHAR" />
@@ -15,9 +16,9 @@
         <result column="nav_feight" property="nav_feight" jdbcType="INTEGER" />
     </resultMap>
      <select id="queryArticleMapByPage" resultMap="Article">
-        select
-          article_id,article_title,article_date,nav_name
-        from article,nav
+        SELECT
+        @rownum:=@rownum+1 AS rowsnumber,article_id,article_title,article_date,nav_name
+        FROM article,(SELECT @rownum:=0) t,nav
         where
         article.nav_id=nav.nav_id
         order by article_date

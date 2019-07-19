@@ -16,6 +16,15 @@ public class Article {
     private String article_content;// longtext comment '文章内容',
     private String nav_id;// varchar(36) not null comment '分类ID'
     private String nav_name;
+    private String rowsnumber;
+
+    public String getRowsnumber() {
+        return rowsnumber;
+    }
+
+    public void setRowsnumber(String rowsnumber) {
+        this.rowsnumber = rowsnumber;
+    }
 
     public String getNav_name() {
         return nav_name;
